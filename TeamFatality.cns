@@ -1,0 +1,1011 @@
+
+;------------------------------------
+; Team Fatality 1: Freeze and Destroy
+;------------------------------------
+
+;--------------
+; Check Partner
+
+[Statedef 9000]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19200
+juggle  = 1
+ctrl = 0
+
+[State 0, End]
+type = ChangeState
+triggerall = partner, facing != facing
+trigger1 = partner, authorname = "DoomGuy II" && partner, stateno = [9000,9005]
+value = 9001
+
+[State 0, End]
+type = ChangeState
+trigger1 = Time = 60
+value = 0
+ctrl = 1
+
+;-------------
+; Check Player
+
+[Statedef 9001]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19200
+juggle  = 1
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = !Time
+trigger1 = (ID = 56 && TeamSide = 1) || (ID = 58 && TeamSide = 2)
+trigger1 = partner, name = "DGBlossom"
+trigger2 = partner, name != "DGBlossom"
+value = 9002
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = !Time
+trigger1 = (ID = 57 && TeamSide = 1) || (ID = 59 && TeamSide = 2)
+trigger1 = partner, name = "DGBlossom"
+value = 9004
+
+;---------------------------------
+; Freeze Opponent (Check Position)
+
+[Statedef 9002]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+juggle  = 1
+ctrl = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = !Time
+value = ifelse(p2dist x > 140,20,19200)
+
+[State 0, ChangeAnim]
+type = VelSet
+trigger1 = Anim = 20
+x = 3
+
+[State 0, ChangeAnim]
+type = ChangeState
+trigger1 = P2Dist X <= 140
+value = 9003
+
+;---------------------------
+; Freeze Opponent (Fatality)
+
+[Statedef 9003]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19210
+juggle  = 1
+ctrl = 0
+
+[State 9010, 3]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+damage = 0,0
+animtype = Heavy
+getpower = 0
+givepower = 0
+hitflag = MAFD
+priority = 7
+pausetime = 0,2
+sparkxy = 0,0
+sparkno = -1
+gurad.sparkno = -1
+hitsound = -1
+guardsound = -1
+ground.type = High
+ground.slidetime = 0
+ground.hittime = 0
+ground.velocity = 0
+air.velocity = 0
+air.fall = 1
+fall = 0
+p2stateno = 50998
+numhits = 0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = Time >= 168
+flag = nomusic
+
+[State 1000, 1]
+type = PlaySnd
+triggerall = Anim = 19210
+trigger1 = AnimElem = 3
+value = 1982,4
+volume = 300
+
+[State 1000, 1]
+type = PlaySnd
+triggerall = Anim = 19210
+trigger1 = AnimElem = 6
+value = 7506,1
+volume = 300
+
+[State 1000, 1]
+type = Helper
+triggerall = Anim = 19210
+trigger1 = animelemtime(6) = 0
+trigger2 = animelemtime(6) = 4
+trigger3 = animelemtime(6) = 8
+trigger4 = animelemtime(6) = 12
+trigger5 = animelemtime(6) = 16
+trigger6 = animelemtime(6) = 20
+trigger7 = animelemtime(6) = 24
+trigger8 = animelemtime(6) = 28
+trigger9 = animelemtime(6) = 32
+trigger10 = animelemtime(6) = 36
+trigger11 = animelemtime(6) = 40
+trigger12 = animelemtime(6) = 44
+trigger13 = animelemtime(6) = 48
+trigger14 = animelemtime(6) = 52
+trigger15 = animelemtime(6) = 56
+trigger16 = animelemtime(6) = 60
+trigger17 = animelemtime(6) = 64
+trigger18 = animelemtime(6) = 68
+trigger19 = animelemtime(6) = 72
+trigger20 = animelemtime(6) = 76
+trigger21 = animelemtime(6) = 80
+trigger22 = animelemtime(6) = 84
+stateno = 191100
+name = "Ice Missile"
+id = 191100
+postype = p1
+pos = 25,-25
+helpertype = normal
+ownpal = 1
+scale = .87,.87
+
+[State ]
+type = Helper
+trigger1 = Time >= 168
+trigger1 = (((id = 56 && teamside = 1) || (id = 58 && teamside = 2)) && partner,authorname = "DoomGuy II") || partner,authorname != "DoomGuy II"
+persistent = 0
+helpertype = Normal
+ID = 7029
+name = "Dark"
+postype = left
+pos = 0,0
+stateno = 7029
+ownpal = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = AnimElem = 1
+v = 8
+value = 1
+
+[State 0, TargetState]
+type = TargetState
+trigger1 = AnimElem = 9
+persistent = 0
+value = 50999
+
+[State 3000, Gib Helper]
+type = Helper
+trigger1 = P2Life = 0
+persistent = 0
+name = "Gib"
+pos = 0,-20
+postype = p2
+stateno = 70442
+helpertype = normal
+ownpal = 1
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = RoundState > 2
+persistent = 0
+value = 19101
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = Anim = 19101
+trigger1 = AnimTime = 0
+value = 19101
+ctrl = 1
+
+;--------------------------------
+; Break Opponent (Check Position)
+
+[Statedef 9004]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19200
+juggle  = 1
+ctrl = 0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+flag2 = nomusic
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = !Time
+value = ifelse(p2dist x > 45,20,19200)
+
+[State 0, ChangeAnim]
+type = VelSet
+trigger1 = Anim = 20
+x = 3
+
+[State 0, ChangeAnim]
+type = VelSet
+trigger1 = Anim != 20
+x = 0
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = P2Dist X <= 45
+value = 19200
+
+[State 0, ChangeAnim]
+type = ChangeState
+triggerall = Time >= 5
+triggerall = Anim = 19200
+trigger1 = partner, name = "Juano`s Sub Guy" && partner, Time >= 120
+trigger2 = partner, name = "DGBlossom" && partner, stateno = 9003 && partner, Time >= 168
+value = 9005
+
+;--------------------------
+; Break Opponent (Fatality)
+
+[Statedef 9005]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19111
+juggle  = 1
+ctrl = 0
+
+[State ]
+type = Helper
+trigger1 = !time
+trigger1 = (((id = 56 && teamside = 1) || (id = 58 && teamside = 2)) && partner,authorname = "DoomGuy II") || partner,authorname != "DoomGuy II"
+helpertype = Normal
+ID = 7029
+name = "Dark"
+postype = left
+pos = 0,0
+stateno = 7029
+ownpal = 1
+
+[State 9010, 3]
+type = HitDef
+trigger1 = AnimElem = 6
+attr = S, NA
+damage = 0,0
+animtype = Heavy
+getpower = 0
+givepower = 0
+hitflag = MAFD
+priority = 7
+pausetime = 0,2
+sparkxy = 0,0
+sparkno = -1
+gurad.sparkno = -1
+hitsound = -1
+guardsound = -1
+ground.type = High
+ground.slidetime = 0
+ground.hittime = 0
+ground.velocity = 0
+air.velocity = 0
+air.fall = 1
+fall = 0
+p2stateno = 51001
+numhits = 0
+
+;[State 3000, Gib Helper]
+;type = Helper
+;trigger1 = animelem = 6
+;name = "Gib"
+;pos = 0,-20
+;postype = p2
+;stateno = 70442
+;helpertype = normal
+;ownpal = 1
+
+[State 0, EnvColor]
+type = EnvColor
+trigger1 = animelem = 6
+value = 255,255,255
+time = 8
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+flag2 = nomusic
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = Time = 0
+value = 0
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = AnimElem = 6
+value = 7505,2
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = AnimElem = 1
+v = 8
+value = 1
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 19101
+ctrl = 1
+
+;--------------------------------
+; Team Fatality 2: Cut and Freeze
+;--------------------------------
+
+;--------------
+; Check Partner
+
+[Statedef 9006]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19200
+juggle  = 1
+ctrl = 0
+
+[State 0, End]
+type = ChangeState
+trigger1 = partner, name = "DGBlossom" && partner, stateno = [9006,9010]
+value = 9007
+
+[State 0, End]
+type = ChangeState
+trigger1 = Time = 60
+value = 0
+ctrl = 1
+
+;-------------
+; Check Player
+
+[Statedef 9007]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19200
+juggle  = 1
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = !Time
+trigger1 = (ID = 56 && TeamSide = 1) || (ID = 58 && TeamSide = 2)
+value = 9008
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = !Time
+trigger1 = (ID = 57 && TeamSide = 1) || (ID = 59 && TeamSide = 2)
+value = 9009
+
+;-------------
+; Cut Opponent
+
+[Statedef 9008]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19220
+juggle  = 1
+ctrl = 0
+
+[State ]
+type = Helper
+trigger1 = !time
+trigger1 = (((id = 56 && teamside = 1) || (id = 58 && teamside = 2)) && partner,authorname = "DoomGuy II") || partner,authorname != "DoomGuy II"
+helpertype = Normal
+ID = 7029
+name = "Dark"
+postype = left
+pos = 0,0
+stateno = 7029
+ownpal = 1
+
+[State 9010, 3]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, NA
+damage = 0,0
+animtype = Heavy
+getpower = 0
+givepower = 0
+hitflag = MAFD
+priority = 7
+pausetime = 0,2
+sparkxy = 0,0
+sparkno = -1
+gurad.sparkno = -1
+hitsound = -1
+guardsound = -1
+ground.type = High
+ground.slidetime = 0
+ground.hittime = 0
+ground.velocity = 0
+air.velocity = 0
+air.fall = 1
+fall = 0
+p2stateno = 51020
+numhits = 0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+flag2 = nomusic
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = AnimElem = 1
+v = 8
+value = 9
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = AnimElem = 6
+y = -4
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = AnimElemTime(6) = 10
+y = 0
+
+[State 0, TargetState]
+type = TargetState
+trigger1 = AnimElem = 3
+value = 90080
+
+[State 3000, Bleed Helper]
+type = Helper
+trigger1 = animelem = 3
+persistent = 0
+id = 7018
+name = "Bleed"
+pos = 40,-40
+postype = p1
+stateno = 7018
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = 5,3
+
+[State 0, TargetState]
+type = TargetState
+trigger1 = AnimElem = 11
+value = 90081
+
+[State 0, TargetState]
+type = TargetState
+trigger1 = AnimElem = 15
+value = 90082
+
+[State 0, salesangre]
+type = Explod
+trigger1 = AnimElem = 11
+anim = 19155
+ID = 19155
+postype = p2
+pos = 0,-60
+removetime = 16
+ontop = 1
+shadow = 0
+ownpal = 1
+;vel = 6,2
+accel = 0,.12
+
+[State 3000, Blood Helper]
+type = Helper
+trigger1 = AnimElem = 15
+persistent = 0
+id = 7037
+name = "Big Blood"
+pos = ceil(enemynear,const(size.mid.pos.x)*enemynear,const(size.xscale)),ceil(enemynear,const(size.mid.pos.y)*enemynear,const(size.yscale))
+postype = p2
+stateno = 7037
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = AnimElem = 8
+value = 7505,3
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = 7505,10
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = AnimElem = 15
+value = 7505,11
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = Time = 80
+v = 8
+value = 9
+
+[State 0, TargetState]
+type = TargetState
+trigger1 = partner, anim = 19222
+trigger1 = partner, animelem = 2
+persistent = 0
+value = 90083
+
+[State 0, NoAutoTurn]
+type = AssertSpecial
+trigger1 = 1
+flag = NoAutoTurn
+
+[State 3111, TargetBind]
+type = TargetBind
+trigger1 = partner, anim = 19181
+trigger1 = partner, AnimElemTime(1) >= 0
+trigger1 = partner, AnimElemTime(43) < 0
+pos = ((partner,pos x-pos x)*facing)+0*partner,const(size.xscale),((partner,pos y-pos y)*(facing||!facing))-44
+
+[State 3111, TargetBind]
+type = TargetBind
+trigger1 = partner, anim = 19181
+trigger1 = partner, AnimElemTime(43) >= 0
+trigger1 = partner, AnimElemTime(44) < 0
+pos = ((partner,pos x-pos x)*facing)+7*partner,const(size.xscale),((partner,pos y-pos y)*(facing||!facing))-60
+
+[State 3111, TargetBind]
+type = TargetBind
+trigger1 = partner, anim = 19222
+trigger1 = partner, AnimElemTime(3) >= 0
+trigger1 = partner, AnimElemTime(4) < 0
+pos = ((partner,pos x-pos x)*facing)+7*partner,const(size.xscale),((partner,pos y-pos y)*(facing||!facing))-60
+
+[State 3111, TargetBind]
+type = TargetBind
+trigger1 = partner, anim = 19222
+trigger1 = partner, AnimElemTime(4) >= 0
+pos = ((partner,pos x-pos x)*facing)+0*partner,const(size.xscale),((partner,pos y-pos y)*(facing||!facing))-44
+
+[State 3111, TargetBind]
+type = TargetBind
+trigger1 = partner, anim = 19222
+trigger1 = partner, AnimElemTime(2) >= 0
+trigger1 = partner, AnimElemTime(3) < 0
+pos = ((partner,pos x-pos x)*facing)+30*partner,const(size.xscale),((partner,pos y-pos y)*(facing||!facing))+0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger1 = partner, ctrl
+value = 19101
+ctrl = 1
+
+[Statedef 90080]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+ctrl = 0
+sprpriority = 0
+anim = 5002
+
+[State 1509, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State nocamov]
+type = ScreenBound
+trigger1 = 1
+value = 0
+
+[State dizzy]
+type = ChangeAnim
+trigger1 = selfanimexist(5300) && anim = 5002 && !animtime
+value = 5300
+
+[Statedef 90081]
+type = S
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+
+[State 191, 3]
+type = Screenbound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 1509, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 0, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = Time = 0
+value = 9108109
+
+[Statedef 90082]
+type = S
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+sprpriority = 3
+
+[State 191, 3]
+type = Screenbound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = !Time
+value = 9108092
+
+[State 0, 1]
+type = Explod
+trigger1 = !Time
+trigger1 = Name = "juano`s sub guy"
+anim = 9108091
+id = 9108091
+postype = p1
+pos = 0,95
+scale = .87,.87
+facing = 1
+ownpal = 1
+removetime = -1
+
+[State 0, 1]
+type = Explod
+trigger1 = !Time
+trigger1 = Name != "juano`s sub guy"
+anim = 9108091
+id = 9108091
+postype = p1
+pos = 0,95
+facing = 1
+ownpal = 1
+removetime = -1
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = Time = 0
+y = -95
+
+[State ]
+type = velset
+trigger1 = time = 1
+y = -6
+x = 2
+
+[State ]
+type = veladd
+trigger1 = time >= 1
+y = .3
+
+[Statedef 90083]
+type = S
+movetype = H
+physics = N
+velset = 0,0
+ctrl = 0
+sprpriority = 3
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = Time < 24
+value = 9108092
+elem = 1
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = Time >= 24
+value = 9108093
+elem = 2
+
+;[State 0, AngleSet]
+;type = AngleDraw
+;trigger1 = Time >= 24
+;value = 90
+;ignorehitpause =
+;persistent =
+
+[State 191, 3]
+type = Screenbound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 1509, Palfx]
+type = Palfx
+trigger1 = Time >= 36
+trigger1 = Time <= 86
+trigger1 = TimeMod = 4,0
+time = 2
+add = -50,-50,128
+mul = 255,255,255
+invertall = 0
+color = 0
+
+[State blackness]
+type = palfx
+trigger1 = Time > 86
+time = 1
+ignorehitpause = 1
+add = 70,70, 250
+
+[State 191, 3]
+type = Screenbound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = Time >= 264
+y = 10
+
+;Life goes to zero.
+[State 51000, 3]
+type = LifeSet
+trigger1 = Pos Y >= 0
+value = 0
+
+;Enemy it comes back to its proper CNS, however it continues in the position Y = 1000.
+[State 51000, 4]
+type = ChangeState
+trigger1 = Pos Y >= 0
+value = 5150
+
+;----------------
+; Freeze Opponent
+
+[Statedef 9009]
+type = S
+movetype= A
+physics = N
+velset = 0,0
+anim = 19200
+sprpriority = 4
+juggle  = 1
+ctrl = 0
+
+[State ]
+type = Helper
+trigger1 = !time
+trigger1 = (((id = 56 && teamside = 1) || (id = 58 && teamside = 2)) && partner,authorname = "DoomGuy II") || partner,authorname != "DoomGuy II"
+helpertype = Normal
+ID = 7029
+name = "Dark"
+postype = left
+pos = 0,0
+stateno = 7029
+ownpal = 1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+flag2 = nomusic
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = Time = 0
+v = 8
+value = 9
+
+[State 0, VelSet]
+type = ChangeAnim
+trigger1 = Time = 83
+value = 19221
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = Time >= 83
+trigger1 = Time < 100
+y = -4
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = Time = 100
+y = 0
+
+[State 0, VelSet]
+type = ChangeAnim
+trigger1 = Time = 266
+value = 19222
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = Anim = 19222
+trigger1 = AnimElem = 2
+value = 800,0
+
+[State 1000, 1]
+type = SprPriority
+trigger1 = Anim = 19222
+trigger1 = AnimElem = 3
+value = 0
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = Anim = 19222 && AnimTime = 0
+value = 9010
+
+[Statedef 9010]
+type    = A
+movetype= A
+physics = N
+velset = 0,0
+anim = 19181
+sprpriority = 0
+ctrl = 0
+
+[State 3111, TargetBind]
+type = TargetBind
+trigger1 = AnimElemTime(1) >= 0
+trigger1 = AnimElemTime(43) < 0
+pos = 0,-44
+
+[State 3111, TargetBind]
+type = TargetBind
+trigger1 = AnimElemTime(43) >= 0
+trigger1 = AnimElemTime(44) < 0
+pos = 7,-60
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+flag2 = nomusic
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = Time = 0
+value = 7,11
+volume = 300
+
+[State -2, NiceHit]
+type = PlaySnd
+trigger1 = AnimElem = 42
+persistent = 0
+value = 7503,4
+abspan = 1
+
+[State 0, 1]
+type = Explod
+trigger1 = AnimElem = 42
+anim = 7506
+ID = 7499
+postype = Left
+pos = 160,73
+scale = .9,.9
+ontop = 1
+removetime = -1
+bindtime = -1
+sprpriority = 9999
+
+[State 3000, 1]
+type = Explod
+trigger1 = AnimElem = 42
+anim = 7505
+id = 7505
+postype = back
+pos = 0,240
+vel = 0,0
+bindtime = -1
+ontop = 1
+removetime = -2
+sprpriority = 9999
+pausemovetime = 99999999999999
+supermovetime = 99999999999999
+persistent = 0
+
+[State 0, EnvColor]
+type = EnvColor
+trigger1 = Enemy, Pos Y >= 0
+value = 255,255,255
+time = 8
+persistent = 0
+
+[State 3000, Gib Helper]
+type = Helper
+trigger1 = Enemy, Pos Y >= 0
+name = "Gib"
+pos = 0,0
+postype = p2
+persistent = 0
+stateno = 70442
+helpertype = normal
+ownpal = 1
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+flag2 = nomusic
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = AnimElem = 44
+value = 1982,5
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = AnimElem = 43
+value = 800,1
+
+[State 1000, 1]
+type = PlaySnd
+trigger1 = Enemy, Pos Y >= 0
+persistent = 0
+value = 7505,2
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = AnimElem = 44
+v = 8
+value = 9
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 19101
+ctrl = 1
+

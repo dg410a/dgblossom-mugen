@@ -1,0 +1,46 @@
+
+--------
+Specials
+--------
+
+Ice Blast (aerial and diagonal) [Finished]
+Ice Puddle [Finished]
+Energy Leash [Finished; Energy Thumper still needs to be implented]
+Laser Eyes and Hand Beam [Finished]
+Boomerang Bow [Finished]
+Slide Kick [Finished; Idea of adding Critical Hit]
+
+------
+Supers
+------
+
+Level 1
+-------
+Detonator Blossom [Finished; Idea of adding Critical Hit]
+Maximum Blossom [Finished; Idea of adding Critical Hit]
+Mega Laser Beam [Finished]
+
+Level 2
+-------
+Super Ice Breath [Finished]
+Electric Fingers [Finished]
+Lightning Beam [Finished]
+
+Level 3
+-------
+Sticky Bow 
+Triple Lasers [Finished]
+Bio Force Rosa [Finished]
+
+Super Mode (Hokkyokuken Kage) (Requires Full Power and < 50% health)
+
+
+-----------
+Other Stuff
+-----------
+
+-Sound Clips
+-Better AI
+-Guitar Move (unsure which category)
+-Energy Leash Fatality
+-Critical Hits
