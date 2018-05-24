@@ -43,7 +43,7 @@ name = "stickybow"
 command = ~D, F, D, B, z
 time = 30
 
-;Liberty Bell
+;Triple Lasers
 [Command]
 name = "triplelasers"
 command = ~D, F, D, B, c
@@ -54,14 +54,6 @@ time = 30
 name = "bfr"
 command = ~D, DF, F, a+b
 time = 30
-
-;-| Ultimate Motion |--------------------------------------------------------
-
-;Bio Force X (BFX)
-[Command]
-name = "bfx"
-command = ~B, BD, D, DF, F, c+z
-time = 40
 
 ;-| Special Motions |------------------------------------------------------
 ;-----------------
@@ -78,7 +70,7 @@ name = "iceclone"
 command = ~D,B, a
 time = 15
 
-;Harpoon
+;Energy Leash
 [Command]
 name = "harpoon"
 command = ~B, B, x
