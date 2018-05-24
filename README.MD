@@ -18,13 +18,21 @@ Normal (in progress)
 ------
 
 -F = move forward
+
 -B = move back
+
 -U = Jump
+
 -D = Duck
+
 -a = low kick
+
 -b = high kick
+
 -x = low punch
+
 -y = high punch
+
 -z = dodge (back = B, z) (forward = F, z)
 
 -Sweep Kick: B, a
@@ -81,7 +89,11 @@ Supers
 # Credits
 
 -OmegaPsycho for giving me permission to do the edit.
+
 -Binho for his Super Laser and Super Freeze Special FX.
+
 -TopKirby8305 for some of his ideas
+
 -IsoJere666 (aka Inferno) for his idea on the Summon a DooM fatality
+
 -(If I forget somebody, I apologize and please let me know so that I can add you to the credits list.)
