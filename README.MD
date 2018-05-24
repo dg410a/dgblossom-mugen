@@ -2,7 +2,7 @@
 
 This was my first attempt into a MUGEN character back in late 2009 (See the ReadmeOld.txt if you want more info). It's basically an edit of OmegaPsycho's old Blossom character, fully optimized with better AI and moves... in addition to Mortal Kombat style moves because I could, at least back then.
 
-As of now though, the MK style is now absent from this version. However, I will make the MK version of it available in a separate branch and may consider updating that as I go with this main version. 
+As of now though, the MK style is now absent from this version. However, the MK version is available in a separate branch. Just click on the branch dropdown box and select "mk-style". This is where you'll find the MK version of DG Blossom. I will be updating this as I go, but not as often as the main one.
 
 This character is currently in its beta stage.
 
@@ -17,15 +17,15 @@ Click on "Clone or Download" and click on the Download ZIP option. Then, extract
 Normal (in progress)
 ------
 
-F = move forward
-B = move back
-U = Jump
-D = Duck
-a = low kick
-b = high kick
-x = low punch
-y = high punch
-z = dodge (back = B, z) (forward = F, z)
+-F = move forward
+-B = move back
+-U = Jump
+-D = Duck
+-a = low kick
+-b = high kick
+-x = low punch
+-y = high punch
+-z = dodge (back = B, z) (forward = F, z)
 
 -Sweep Kick: B, a
 
@@ -80,8 +80,8 @@ Supers
 
 # Credits
 
-OmegaPsycho for giving me permission to do the edit.
-Binho for his Super Laser and Super Freeze Special FX.
-TopKirby8305 for some of his ideas
-IsoJere666 (aka Inferno) for his idea on the Summon a DooM fatality
-(If I forget somebody, I apologize and please let me know so that I can add you to the credits list.)
+-OmegaPsycho for giving me permission to do the edit.
+-Binho for his Super Laser and Super Freeze Special FX.
+-TopKirby8305 for some of his ideas
+-IsoJere666 (aka Inferno) for his idea on the Summon a DooM fatality
+-(If I forget somebody, I apologize and please let me know so that I can add you to the credits list.)
