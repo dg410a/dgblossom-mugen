@@ -1,0 +1,46 @@
+
+--------
+Specials
+--------
+
+Ice Blast (aerial and diagonal) [Finished]
+Ice Puddle [Finished]
+Energy Leash [Finished; Energy Thumper still needs to be implented]
+Laser Eyes and Hand Beam [Finished]
+Boomerang Bow [Finished]
+Slide Kick [Finished; Idea of adding Critical Hit]
+
+------
+Supers
+------
+
+Level 1
+-------
+Detonator Blossom
+Maximum Blossom
+Mega Laser Beam
+Dim Mak (Counter)
+
+Level 2
+-------
+Super Ice Breath
+Electric Fingers
+Sticky Bow
+
+Level 3
+-------
+Lightning Beam
+Laser Kenesis (Counter)
+
+Level 4
+-------
+Triple Lasers
+Bio Force Blast
+
+
+-----------
+Other Stuff
+-----------
+
+-Sound Clips
+-Better AI
