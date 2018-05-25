@@ -2,7 +2,7 @@
 
 This was my first attempt into a MUGEN character back in late 2009 (See the ReadmeOld.txt if you want more info). It's basically an edit of OmegaPsycho's old Blossom character, fully optimized with better AI and moves... in addition to Mortal Kombat style moves because I could, at least back then.
 
-As of now though, the MK style is now absent from this version. However, the MK version is available in a separate branch. Just click on the branch dropdown box and select "mk-style". This is where you'll find the MK version of DG Blossom. I will be updating this as I go, but not as often as the main one.
+As of now though, the MK style is now absent from this version. However, the MK version is available in a separate branch. Just click on the branch dropdown box and select "mk-style". This is where you'll find the MK version of DG Blossom. I will be updating that as well.
 
 This character is currently in its beta stage.
 
@@ -10,11 +10,11 @@ Feel free to report any bugs in the issues tab and leave any suggestions with re
 
 # How to Install
 
-Click on "Clone or Download" and click on the Download ZIP option. Then, extract it into the chars folder of your root MUGEN folder. It's highly mandatory that you put the characters files in its own folder and have the folder named exactly the same as the name of the .def file. Otherwise, it will NOT show up on your roster.
+Click on "Clone or Download" and click on the Download ZIP option. Then, extract it into the chars folder of your root MUGEN folder. The ZIP file should come in its own folder and you'll want to be sure that the folder name itself is the same as the .def file. Otherwise, it will NOT show up on your roster.
 
 # Moves
 
-Normal (in progress)
+Normal
 ------
 
 -F = move forward

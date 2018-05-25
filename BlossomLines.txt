@@ -1,4 +1,4 @@
-Blossom Voiceovers
+Blossom Voiceovers (Work in Progress)
 ------------------
 
 -Light Pain Sounds
@@ -22,13 +22,13 @@ Super Lines
 
 "Ice Beam!"
 
-"Time to chill!"
+"Looks like it's time to chill!"
 
 "Who wants some Ice!"
 
 "Electric Fingers!"
 
-"Careful. I'm high voltage."
+"Care for some static!?"
 
 "Time to taze."
 
@@ -40,15 +40,15 @@ Super Lines
 
 "Sticky Bow!"
 
-"Banzai!"
+"Have a taste of my bow!"
 
 "Cowabunga!"
 
-"Look, you have a new friend!"
-
 "Stick around!"
 
-"Better watch out! It'll go BOOM!"
+"No chance buddy!"
+
+"!"
 
 "Triple Threat!"
 
@@ -66,7 +66,7 @@ Super Lines
 Victory Lines 
 -------------
 
-"I am the leader. I am A#1."
+"And people call me boring, huh? "
 
 "Did I promise to beat you last? ...I lied."
 
@@ -82,11 +82,11 @@ Victory Lines
 Defeat Lines
 ------------
 
-"You've gotta be kidding me!"`
+"You've gotta be kidding me!"
 
 "Oh, good grief."
 
-"Dooohhh!!!"
+"Dang it!"
 
 -----------
 Intro Lines
@@ -110,11 +110,9 @@ Confronting another Blossom
 
 "What the...? Who are you supposed to be?"
 
-"Hahahaha... you're kidding..."
+"...Hehehehe ...This is a joke, right?"
 
-"Look bud, this planet ain't big enough for two Blossom."
-
-"...You don't care don't ya? Alright, smart lass! Let's settle this the hard way!"
+"I'm a joke? ...Okay, you delusional fraud! Let's settle this the hard way!"
 
 "Smart, cute, and tough my hiney!"
 
@@ -122,11 +120,13 @@ Confronting another Blossom
 
 "Go home! You're not the whole package!"
 
----------------------------------------------
-MvC Blossom Lines (Requested by thebestml201)
----------------------------------------------
+-----------------
+MvC Blossom Lines
+-----------------
 
-"Funny. I was gonna tell you the same thing."
+"Who am I? Ha, have you been living under a rock? I'm Blossom of the Powerpuff Girls. Then again, I could ask you the same question."
+
+"Eh? What are you talking about? I AM Blossom! If anything, you're the one who's the joke, you imposter!"
 
 "Okay then! Let's see who's the real Blossom!"
 
