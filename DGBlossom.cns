@@ -258,10 +258,27 @@ value = 1
 ;========================================================================
 ; DG Blossom Introduction
 ;========================================================================
+
 [Statedef 190]
 type = S
 ctrl = 0
+anim = 190
 velset = 0,0
+
+[State 191,1]
+type = ChangeState
+trigger1 = P2Name = "Shao Kahn" && Enemy, AuthorName = "OmegaPsycho" && Enemy, AnimExist(7750)
+;trigger1 = Var(9) = [76,100]
+value = 194
+
+[State 191,1]
+type = ChangeState
+trigger1 = Time = 0
+;trigger1 = Var(9) = [0,25]
+trigger2 = NumPartner
+trigger2 = Partner, Name = "DGBlossom" || Partner, Name = "DGBubbles" || Partner, Name = "DGButtercup"
+value = 191
+
 
 [State 181, AssertSpecial]
 type = AssertSpecial
@@ -278,47 +295,11 @@ range = 0,50
 ;ignorehitpause =
 ;persistent =
 
-;[State 191,1]
-;type = ChangeState
-;trigger1 = Time = 1
-;trigger1 = Var(39) = 0
-;trigger1 = Var(9) = [0,24]
-;value = 191
-
-;[State 191,1]
-;type = ChangeState
-;trigger1 = Time = 1
-;trigger1 = Var(39) = 0
-;trigger1 = Var(9) = [25,50]
-;value = 1910
-
-[State 191,1]
-type = ChangeState
-trigger1 = P2Name = "Shao Kahn" && Enemy, AuthorName = "OmegaPsycho" && Enemy, AnimExist(7750)
-;trigger1 = Var(9) = [76,100]
-value = 194
-
-[State 191,1]
-type = ChangeState
-trigger1 = Time = 0
-;trigger1 = Var(9) = [0,25]
-trigger2 = NumPartner
-trigger2 = Partner, Name = "DGBlossom" || Partner, Name = "DGBubbles" || Partner, Name = "DGButtercup"
-value = 191
-
-;[State 191,1]
-;type = ChangeState
-;triggerall = Time = 0
-;trigger1 = Var(9) = [26,50]
-;trigger1 = !NumPartner
-;trigger2 = Partner, Name != "DGBlossom"
-;trigger2 = Partner, Name != "DGBubbles"
-;trigger2 = Partner, Name != "DGButtercup"
-;value = 192
-
 ;==========================================================================
 ; DG Blossom Intro
 ;==========================================================================
+
+
 [Statedef 191]
 type = S
 ctrl = 0
