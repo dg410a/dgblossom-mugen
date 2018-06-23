@@ -8,7 +8,7 @@ name = "DGBlossomMK"
 displayname = "Blossom"
 versiondate = 26,1,2009
 mugenversion = 1.0
-author = "DoomGuy II"
+author = "DOSGeek 95"
 pal.defaults = 1
 
 [Files]
